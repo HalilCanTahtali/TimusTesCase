@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.Driver;
 
 public class SignInPage extends AbstractHelper
@@ -77,14 +78,16 @@ public class SignInPage extends AbstractHelper
 
     public void changeFrame()
     {
+        driver.switchTo().defaultContent();
         driver.switchTo().frame(iframe);
     }
 
     @FindBy(xpath = "//*[@class=\"sc-nkuzb1-0 sc-d5trka-0 eZxMRy button\"]")
-    private WebElement startPuzzleButton;
+    private WebElement puzzleButton;
 
     public void clickStartPuzzleButton()
     {
-        clickElement(startPuzzleButton);
+        wait.until(ExpectedConditions.elementToBeClickable(puzzleButton));
+        clickElement(puzzleButton);
     }
 }

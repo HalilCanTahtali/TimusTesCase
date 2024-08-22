@@ -45,6 +45,6 @@ public class SearchStepDefs
     public void print_the_all_prices_at_the_current_page()
     {
         sp.PrintAllPrices();
-        Driver.closeDriver();
+        //Driver.closeDriver();
     }
 }

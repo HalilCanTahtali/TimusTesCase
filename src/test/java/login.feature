@@ -1,15 +1,16 @@
-Feature: Login
-  Scenario: Login to amazon website
+Feature: Negatif Login
+  Scenario Outline: Negatif login on amazon
 
-    Given User go to the amazon website
-    When User click the hello button
-    And user type mail or phone and click button "+905321765231"
-    And user type the password and click the button "16835292534Aa."
-    Then check the url contains signin
-
-
-
-    #Examples:
-     # | phone       | password     |
-     # |+905321765231|16835292534Aa.|
-     # |+905333333333|123123123Aa.  |
+    Given user go to amazon website
+    When User click hello button
+    And user type the "<phone>" phone
+    And user click the next button for phone
+    And user type the "<password>" password
+    Then user click the next button for pass
+    Examples:
+      | phone                      | password |
+      |asdfasdf                    |asdfasdf  |
+      |asdfa123                    |asdfasdf  |
+      |+905321765231               |passwordforTimus123.!*|
+      |+905321765231               |asdfasdf  |
+      |halilcantahtalii@gmail.com  |123321Aa. |

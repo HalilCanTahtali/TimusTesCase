@@ -36,9 +36,9 @@ public class SignInStepDefs
         sp.clickContinueButton();
     }
     @Then("user click the start puzzle button")
-    public void user_click_the_start_puzzle_button()
-    {
+    public void user_click_the_start_puzzle_button() throws InterruptedException {
         sp.changeFrame();
+        Thread.sleep(2000);
         sp.clickStartPuzzleButton();
         Driver.closeDriver();
     }

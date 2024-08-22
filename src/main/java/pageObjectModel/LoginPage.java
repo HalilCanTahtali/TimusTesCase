@@ -1,5 +1,6 @@
 package pageObjectModel;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -54,5 +55,30 @@ public class LoginPage extends AbstractHelper
     public void clickPassButton()
     {
         clickElement(passButton);
+    }
+
+    @FindBy(xpath = "(//*[@class=\"a-alert-heading\"])[1]")
+    WebElement alertForWrongMailorPhone;
+    @FindBy(xpath = "(//*[@class=\"a-alert-content\"])[4]")
+    WebElement alertForInvalidMailorPhone;
+
+    public void isPhoneAlertMessageDisplayed() {
+        Assert.assertFalse("Invalid Mail or Phone",(isElementPresent(alertForInvalidMailorPhone)));
+        Assert.assertFalse("Wrong Mail or Phone",(isElementPresent(alertForWrongMailorPhone)));
+    }
+
+    @FindBy(className = "a-list-item")
+    WebElement alertForWrongPass;
+
+    public void isPassAlertMessageDisplayed()
+    {
+        boolean control=isElementPresent(alertForWrongPass);
+
+        if(!control)
+        {
+            System.out.println("Successfully SignIn");
+        }
+        Assert.assertFalse("Wrong Password",(control));
+
     }
 }
